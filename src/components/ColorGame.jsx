@@ -14,6 +14,8 @@ const ColorGame = () => {
   const startNewGame = () => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     setTargetColor(randomColor);
+    setScore(0);
+    setGameStatus("");
   };
 
   const handleGuess = (color) => {
