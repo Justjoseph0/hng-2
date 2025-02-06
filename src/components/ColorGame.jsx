@@ -25,7 +25,11 @@ const ColorGame = () => {
     } else {
       setGameStatus(`Wrong! The correct color was ${targetColor}.`);
     }
-    setTimeout(startNewGame, 1000); 
+    setTimeout(() => {
+      const newColor = colors[Math.floor(Math.random() * colors.length)];
+      setTargetColor(newColor);
+      setGameStatus("");
+    }, 1000);
   };
 
   return (
@@ -51,8 +55,12 @@ const ColorGame = () => {
           </button>
         ))}
       </div>
-      <p className="text-lg font-semibold" data-testid="gameStatus">{gameStatus}</p>
-      <p className="text-lg" data-testid="score">Score: {score}</p>
+      <p className="text-lg font-semibold" data-testid="gameStatus">
+        {gameStatus}
+      </p>
+      <p className="text-lg" data-testid="score">
+        Score: {score}
+      </p>
       <button
         className="mt-4 px-4 py-2 bg-gray-800 text-white rounded"
         onClick={startNewGame}
